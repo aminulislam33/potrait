@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .resend {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .resend-timer {
+            display: none; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Verify OTP</h2>
+        <form action="/user/verify-otp" method="post">
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="resend">
+            <p>Didn't receive OTP?</p>
+            <button id="resendBtn" onclick="handleResendOTP()">Resend OTP</button>
+            <div class="resend-timer" id="resendTimer">Resend OTP in 5:00</div>
+        </div>
+    </div>
+
+    <script>
+
+        function handleResendOTP() {
+
+            document.getElementById('resendBtn').disabled = true;
+            document.getElementById('resendTimer').style.display = 'block';
+
+            let secondsLeft = 300;
+            const timer = setInterval(function () {
+                secondsLeft--;
+                const minutes = Math.floor(secondsLeft / 60);
+                const seconds = secondsLeft % 60;
+                document.getElementById('resendTimer').textContent = `Resend OTP in ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('resendBtn').disabled = false;
+                    document.getElementById('resendTimer').style.display = 'none';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

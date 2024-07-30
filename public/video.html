@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manisha Banerjee</title>
+    <link rel="icon" href="https://res.cloudinary.com/dwr8472qb/image/upload/v1722287108/Screenshot_2024-07-30-02-33-24-296_com.instagram.android-edit_r3jftz.jpg" type="image/icon type">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100%;
+        }
+
+        /* BACKGROUND */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 100, 0.8));
+            overflow: hidden;
+        }
+
+        /* ANIMATED FLOWER */
+        .flower-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none; /* Make sure flowers don't interfere with interactions */
+        }
+
+        .flower-container svg {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.6;
+        }
+
+        .flower-left {
+            left: 5%;
+            top: 10%;
+            animation: bloom 20s infinite alternate;
+        }
+
+        .flower-right {
+            right: 5%;
+            top: 60%;
+            animation: bloom 20s infinite alternate-reverse;
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* VIDEO CONTAINER */
+        .video-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 1080px;
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+
+        /* VIDEO PLAYER */
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* AUDIO CONTROLS */
+        audio {
+            display: none; /* Hide audio controls */
+        }
+        .button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: #00408d;
+    transform: scale(0.95);
+}
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="flower-container">
+        <!-- Example of a blooming flower SVG -->
+        <svg class="flower-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" fill="rgba(255, 0, 0, 0.5)" />
+        </svg>
+        <svg class="flower-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" fill="rgba(255, 0, 0, 0.5)" />
+        </svg>
+    </div>
+    <div class="video-container">
+        <video autoplay controls loop>
+            <source src="https://res.cloudinary.com/dwr8472qb/video/upload/v1722285609/manisha-video_-_Made_with_Clipchamp_1_qyn0en.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <a href="/last-page" class="button">Next</a>
+    <!-- Additional audio element for background music -->
+    <audio autoplay loop>
+        <source src="https://example.com/your-background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
